@@ -92,6 +92,7 @@ class AnnouncementController extends Controller
             $announcement->image = $imageName ? '/images/announcement/' . $imageName : null;
             $announcement->document = $documentName ? '/images/announcement/' . $documentName : null;
             $announcement->content = $request->content;
+            $announcement->created_by = auth()->user()->id;
             $announcement->save();
 
             DB::commit();
@@ -142,6 +143,7 @@ class AnnouncementController extends Controller
             $announcement->image = $imageName ? '/images/announcement/' . $imageName : $announcement->image;
             $announcement->document = $documentName ? '/images/announcement/' . $documentName : $announcement->document;
             $announcement->content = $request->content;
+            $announcement->updated_by = auth()->user()->id;
             $announcement->update();
 
             DB::commit();

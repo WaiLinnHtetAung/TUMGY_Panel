@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('type')->default('News');
             $table->string('image');
             $table->text('content');
+            $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('cascade');
+            $table->foreignId('updated_by')->nullable()->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

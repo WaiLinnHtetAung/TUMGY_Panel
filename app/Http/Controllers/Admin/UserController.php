@@ -84,7 +84,12 @@ class UserController extends Controller
     {
         DB::beginTransaction();
         try {
-            $user = User::create($request->all());
+            $user = new User();
+            $user->name = $request->name;
+            $user->email = $request->email;
+            $user->password = bcrypt($request->password);
+            $user->created_by = auth()->user()->id;
+            $user->save();
 
             $user->syncRoles($request->roles);
 
@@ -126,7 +131,13 @@ class UserController extends Controller
     {
         DB::beginTransaction();
         try {
-            $user->update($request->all());
+            $user->name = $request->name;
+            $user->email = $request->email;
+            if ($request->password) {
+                $user->password = bcrypt($request->password);
+            }
+            $user->updated_by = auth()->user()->id;
+            $user->update();
 
             $user->syncRoles($request->roles);
 

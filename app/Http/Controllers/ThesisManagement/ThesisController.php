@@ -113,6 +113,7 @@ class ThesisController extends Controller
             $thesis->submission_year = $request->submission_year;
             $thesis->submission_month = $request->submission_month;
             $thesis->file = $fileName ? '/thesis_files/' . $fileName : null;
+            $thesis->created_by = auth()->user()->id;
             $thesis->save();
 
             DB::commit();
@@ -155,6 +156,7 @@ class ThesisController extends Controller
             $thesi->submission_year = $request->submission_year;
             $thesi->submission_month = $request->submission_month;
             $thesi->file = $fileName ? '/thesis_files/' . $fileName : $thesi->file;
+            $thesi->updated_by = auth()->user()->id;
             $thesi->update();
 
             DB::commit();

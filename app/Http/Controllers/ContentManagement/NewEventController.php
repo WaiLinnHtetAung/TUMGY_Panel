@@ -104,6 +104,7 @@ class NewEventController extends Controller
             $newEvent->type = $request->type;
             $newEvent->image = $imageName ? '/images/news_event/' . $imageName : null;
             $newEvent->content = $request->content;
+            $newEvent->created_by = auth()->user()->id;
             $newEvent->save();
 
             if(!empty($request->images) && is_array($request->images)) {
@@ -180,6 +181,7 @@ class NewEventController extends Controller
             $newsEvent->type = $request->type;
             $newsEvent->image = $imageName ? '/images/news_event/' . $imageName : $newsEvent->image;
             $newsEvent->content = $request->content;
+            $newsEvent->updated_by = auth()->user()->id;
             $newsEvent->update();
 
             if (count($newsEvent->images) > 0) {

@@ -66,6 +66,7 @@ class DepartmentController extends Controller
             $department = new Department();
             $department->name = $request->name;
             $department->logo = $fileName ? '/images/departments/' . $fileName : null;
+            $department->created_by = auth()->user()->id;
             $department->save();
 
             DB::commit();
@@ -102,6 +103,7 @@ class DepartmentController extends Controller
 
             $department->name = $request->name;
             $department->logo = $fileName ? '/images/departments/' . $fileName : $department->logo;
+            $department->updated_by = auth()->user()->id;
             $department->update();
 
             DB::commit();

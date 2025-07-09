@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('image');
             $table->integer('image_order_no');
+            $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('cascade');
+            $table->foreignId('updated_by')->nullable()->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

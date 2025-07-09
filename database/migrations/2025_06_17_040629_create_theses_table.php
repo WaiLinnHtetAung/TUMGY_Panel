@@ -21,6 +21,8 @@ return new class extends Migration
             $table->string('submission_year');
             $table->string('submission_month');
             $table->string('file')->nullable();
+            $table->foreignId('created_by')->nullable()->constrained('users')->onDelete('cascade');
+            $table->foreignId('updated_by')->nullable()->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

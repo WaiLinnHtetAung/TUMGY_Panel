@@ -88,6 +88,7 @@ class RolesController extends Controller
         try {
             $role = Role::create([
                 'name' => $request->name,
+                'created_by' => auth()->user()->id
             ]);
 
             $role->givePermissionTo($request->permissions);
@@ -130,6 +131,7 @@ class RolesController extends Controller
         try {
             $role->update([
                 'name' => $request->name,
+                'updated_by' => auth()->user()->id
             ]);
 
             $old_permissions = $role->permissions->pluck('name')->toArray();

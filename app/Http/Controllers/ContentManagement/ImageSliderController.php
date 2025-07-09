@@ -66,6 +66,7 @@ class ImageSliderController extends Controller
             $imageSlider = new ImageSlider();
             $imageSlider->image = $fileName ? '/images/sliders/' . $fileName : null;
             $imageSlider->image_order_no = $request->image_order_no;
+            $imageSlider->created_by = auth()->user()->id;
             $imageSlider->save();
 
             DB::commit();
@@ -99,6 +100,7 @@ class ImageSliderController extends Controller
 
             $imageSlider->image = $fileName ? '/images/sliders/' . $fileName : $imageSlider->image;
             $imageSlider->image_order_no = $request->image_order_no;
+            $imageSlider->updated_by = auth()->user()->id;
             $imageSlider->update();
 
             DB::commit();

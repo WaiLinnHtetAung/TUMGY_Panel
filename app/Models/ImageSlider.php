@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class ImageSlider extends Model
 {
     use HasFactory;
+
+    public function createdUser()
+    {
+        return $this->belongsTo(User::class, 'created_by');
+    }
+
+    public function updatedUser()
+    {
+        return $this->belongsTo(User::class, 'updated_by');
+    }
 }
