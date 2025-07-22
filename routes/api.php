@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Api\Content\EmailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\Thesis\ThesisController;
@@ -50,4 +51,7 @@ Route::group(['prefix' => 'v1'], function () {
     // activity
     Route::get('/activities', [ActivityController::class, 'index']);
     Route::get('/activities/{activity}', [ActivityController::class, 'show']);
+
+    // email
+    Route::post('submit-email', [EmailController::class, 'submitEmail']);
 });
