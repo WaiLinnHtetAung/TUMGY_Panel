@@ -120,6 +120,13 @@
                             </a>
                         </li>
                     @endcan
+                    @can('rector_message_access')
+                        <li class="menu-item {{ request()->is('content-management/rector-messages') || request()->is('content-management/rector-messages/*') ? 'active open' : '' }}">
+                            <a href="{{route('content-management.rector-messages.index')}}" class="menu-link">
+                                <div data-i18n="Connections">Rector Message</div>
+                            </a>
+                        </li>
+                    @endcan
                     @can('announcement_access')
                         <li class="menu-item {{ request()->is('content-management/announcements') || request()->is('content-management/announcements/*') ? 'active open' : '' }}">
                             <a href="{{route('content-management.announcements.index')}}" class="menu-link">
@@ -131,6 +138,13 @@
                         <li class="menu-item {{ request()->is('content-management/news-events') || request()->is('content-management/news-events/*') ? 'active open' : '' }}">
                             <a href="{{route('content-management.news-events.index')}}" class="menu-link">
                                 <div data-i18n="Connections">News & Events</div>
+                            </a>
+                        </li>
+                    @endcan
+                    @can('activity_access')
+                        <li class="menu-item {{ request()->is('content-management/activities') || request()->is('content-management/activities/*') ? 'active open' : '' }}">
+                            <a href="{{route('content-management.activities.index')}}" class="menu-link">
+                                <div data-i18n="Connections">Activities</div>
                             </a>
                         </li>
                     @endcan

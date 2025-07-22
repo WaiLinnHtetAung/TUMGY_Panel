@@ -1,12 +1,14 @@
 <?php
 
-use App\Http\Controllers\Api\Thesis\ThesisController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\Thesis\ThesisController;
 use App\Http\Controllers\Api\Edu\DepartmentController;
+use App\Http\Controllers\Api\Content\ActivityController;
 use App\Http\Controllers\Api\Content\NewEventController;
 use App\Http\Controllers\Api\Content\ImageSliderController;
 use App\Http\Controllers\Api\Content\AnnouncementController;
+use App\Http\Controllers\Api\Content\RectorMessageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,4 +43,11 @@ Route::group(['prefix' => 'v1'], function () {
     // thesis
     Route::get('/thesis/{department_slug}', [ThesisController::class, 'index']);
     Route::get('/thesis/{thesis}', [ThesisController::class, 'show']);
+
+    // rector message
+    Route::get('/rector-messages', [RectorMessageController::class, 'index']);
+
+    // activity
+    Route::get('/activities', [ActivityController::class, 'index']);
+    Route::get('/activities/{activity}', [ActivityController::class, 'show']);
 });

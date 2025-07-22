@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ContentManagement\ActivityController;
 use App\Http\Controllers\ContentManagement\DropzoneController;
 use App\Http\Controllers\ContentManagement\NewEventController;
+use App\Http\Controllers\ContentManagement\RectorMessageController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Admin\UserController;
@@ -65,6 +67,11 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
         Route::post('update-image-slider/{imageSlider}', [ImageSliderController::class, 'updateSlider']);
         Route::resource('image-sliders', ImageSliderController::class);
 
+        // rector message
+        Route::get('rector-message-list', [RectorMessageController::class, 'rectorMessageLists']);
+        Route::post('update-rector-message/{rectorMessage}', [RectorMessageController::class, 'updateRectorMessage']);
+        Route::resource('rector-messages', RectorMessageController::class);
+
         // announcement
         Route::get('announcement-list', [AnnouncementController::class, 'announcementLists']);
         Route::post('update-announcement/{announcement}', [AnnouncementController::class, 'updateAnnouncement']);
@@ -74,6 +81,11 @@ Route::group(['middleware' => ['auth', 'prevent-back-history']], function () {
         Route::get('news-events-list', [NewEventController::class, 'newsEventsLists']);
         Route::post('update-news-events/{newsEvent}', [NewEventController::class, 'updateNewsEvents']);
         Route::resource('news-events', NewEventController::class);
+
+        // activities
+        Route::get('activities-list', [ActivityController::class, 'activityLists']);
+        Route::post('update-activities/{activity}', [ActivityController::class, 'updateActivity']);
+        Route::resource('activities', ActivityController::class);
 
         // dropzone
         Route::post('/storeMedia', [DropzoneController::class, 'storeMedia'])->name('storeMedia');

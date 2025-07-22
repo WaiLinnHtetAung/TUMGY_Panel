@@ -22,7 +22,7 @@
                 <label for="">Type <span class="text-danger">*</span></label>
                 <select name="type" id=""  class="form-select select2 type" data-placeholder="---Please Select---">
                     <option value=""></option>
-                    <option value="News" {{isset($news_event) ? ($news_event->type == 'Mews' ? 'selected' : '') : ''}}>News</option>
+                    <option value="News" {{isset($news_event) ? ($news_event->type == 'News' ? 'selected' : '') : ''}}>News</option>
                     <option value="Event" {{isset($news_event) ? ($news_event->type == 'Event' ? 'selected' : '') : ''}}>Event</option>
                 </select>
                 <span class="text-danger logo_err"></span>
